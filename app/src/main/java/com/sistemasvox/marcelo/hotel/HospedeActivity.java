@@ -33,7 +33,7 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
         hospedes.add(new Hospede("Marcelo Vieira", "122.999.666-40", "M", "(34) 99150-9513", "2018-12-13", "01"));
         hospedes.add(new Hospede("Marcelo Ômega", "111.222.333-40", "M", "(34) 99150-9513", "2018-12-13", "02"));
 
-        listView.setAdapter(new HospedeAdapter(this,hospedes));
+        listView.setAdapter(new HospedeAdapter(this, hospedes));
         listView.setOnItemClickListener(this);
 
     }
@@ -43,6 +43,7 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
         Hospede hospede = (Hospede) parent.getItemAtPosition(position);
         Toast.makeText(this, hospede.getNome(), Toast.LENGTH_SHORT).show();
     }
+
     private void mensagem(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }

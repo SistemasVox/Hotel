@@ -19,5 +19,7 @@
     <string name="txtDataINR">2018-12-13</string>
     <string name="txtNotaID">Nota / ID:</string>
     <string name="txtNotaIDR">01</string>
+    <string name="txtTempHosp">Tempo de Hospedagem:</string>
+    <string name="txtTempHospR">0</string>
 
 </resources>

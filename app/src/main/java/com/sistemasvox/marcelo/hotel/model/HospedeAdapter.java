@@ -42,7 +42,7 @@ public class HospedeAdapter  extends BaseAdapter {
         Hospede hospede = lista.get(position);
 
         //Passo 2 Criar Linha (Lista de Layouts)
-        View linha = LayoutInflater.from(ctx).inflate(R.layout.hospede,null);
+        View linha = LayoutInflater.from(ctx).inflate(R.layout.layout_hospede,null);
 
         //Passo 3 Preecher
 
