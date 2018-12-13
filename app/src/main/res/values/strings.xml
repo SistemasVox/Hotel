@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Hotel SV</string>
+    <string name="titulo">Sistemas Vox</string>
+    <string name="btnHospede">Hóspede</string>
+    <string name="bntReserva">Reserva</string>
+    <string name="bntNota">Nota Fiscal</string>
+    <string name="bntListHospede">Listar Hóspedes</string>
+    <string name="bntListReserva">Listar Reservas</string>
+    <string name="btnListNotaFiscal">Listar Notas Fiscais</string>
+    <string name="txtNomeHospede">Nome:</string>
+    <string name="txtNomeHospedeR">Marcelo Ômega Vieira</string>
+    <string name="txtCPF">CPF:</string>
+    <string name="txtCPFHospede">123.999.666-40</string>
+    <string name="txtSexo">Sexo:</string>
+    <string name="txtSexoR">M</string>
+    <string name="txtTel">Telefone:</string>
+    <string name="txtTelR">(34) 99150-9513</string>
+    <string name="txtDataIN">Data Entrada:</string>
+    <string name="txtDataINR">2018-12-13</string>
+    <string name="txtNotaID">Nota / ID:</string>
+    <string name="txtNotaIDR">01</string>
+
+</resources>
