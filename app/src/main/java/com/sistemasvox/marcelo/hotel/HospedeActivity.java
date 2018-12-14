@@ -16,7 +16,6 @@ import java.util.List;
 public class HospedeActivity extends Activity implements AdapterView.OnItemClickListener {
 
     List<Hospede> hospedes;
-    HospedeAdapter adapter;
     ListView listView;
 
     @Override

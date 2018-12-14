@@ -4,29 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/txtNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_constraintStart_toStartOf="parent"
-        android:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:padding="8dp"
         android:text="@string/txtNomeHospede"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtNomeRes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_constraintVertical_bias="0.0"
-        android:layout_constraintBottom_toBottomOf="@+id/txtNome"
-        android:layout_constraintEnd_toEndOf="parent"
-        android:layout_constraintTop_toTopOf="@+id/txtNome"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:padding="8dp"
@@ -35,14 +32,13 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtNome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtNome" />
+        app:layout_constraintTop_toTopOf="@+id/txtNome"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtCPF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_constraintTop_toBottomOf="@+id/txtNome"
-        android:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -79,24 +75,52 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:padding="8dp"
-        android:text="@string/txtTempHosp"
+        android:text="@string/txtValorNota"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCPF" />
 
     <TextView
-        android:id="@+id/txtTempHospR"
+        android:id="@+id/txtValorNotaR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:padding="8dp"
-        android:text="@string/txtTempHospR"
+        android:text="@string/txtValorNotaR"
         android:textIsSelectable="true"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtValorNota"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtValorNota" />
 
+    <TextView
+        android:id="@+id/txtCod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_constraintTop_toBottomOf="@+id/txtCPF"
+        android:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:padding="8dp"
+        android:text="@string/txtNotaID"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtValorNota" />
+
+    <TextView
+        android:id="@+id/txtCodR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:padding="8dp"
+        android:text="@string/txtNotaIDR"
+        android:textIsSelectable="true"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtCod"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtCod" />
 </android.support.constraint.ConstraintLayout>

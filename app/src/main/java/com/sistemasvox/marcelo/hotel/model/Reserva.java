@@ -7,6 +7,11 @@ public class Reserva {
     public Reserva() {
     }
 
+    public Reserva(String cod, Hospede hospede) {
+        this.cod = cod;
+        this.hospede = hospede;
+    }
+
     public Reserva(String cod, String tempoHosp, Hospede hospede) {
         this.cod = cod;
         this.tempoHosp = tempoHosp;

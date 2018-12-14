@@ -19,7 +19,6 @@
         <activity android:name=".HospedeActivity" />
         <activity android:name=".ReservaActivity" />
         <activity android:name=".NotaFiscalActivity" />
-        <activity android:name=".layout_Reserva"></activity>
     </application>
 
 </manifest>

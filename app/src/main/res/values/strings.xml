@@ -21,5 +21,7 @@
     <string name="txtNotaIDR">01</string>
     <string name="txtTempHosp">Tempo de Hospedagem:</string>
     <string name="txtTempHospR">0</string>
+    <string name="txtValorNota">Valor:</string>
+    <string name="txtValorNotaR">0.00</string>
 
 </resources>

@@ -57,7 +57,7 @@ public class ReservaAdapter extends BaseAdapter {
         cpf.setText(reserva.getHospede().getCpf());
         tempo.setText(tempoHostegagem(reserva.getHospede().getData_in()));
 
-        return null;
+        return linha;
     }
 
     private String tempoHostegagem(String data_in) {
