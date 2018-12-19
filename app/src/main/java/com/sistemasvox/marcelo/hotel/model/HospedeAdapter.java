@@ -23,17 +23,17 @@ public class HospedeAdapter  extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return lista.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return lista.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override

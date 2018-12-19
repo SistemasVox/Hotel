@@ -28,13 +28,13 @@ public class NotaFiscalActivity extends Activity implements AdapterView.OnItemCl
     }
     public void listarNotas(View v) {
         listView = new ListView(this);
-        setContentView(listView);
         notaFiscals = new ArrayList<NotaFiscal>();
 
         notaFiscals.add(new NotaFiscal("01",0.00, new Hospede("Marcelo Vieira", "122.999.666-40", "M", "(34) 99150-9513", "2018-12-13", "01")));
         notaFiscals.add(new NotaFiscal("02",0.00, new Hospede("Marcelo Ômega", "111.222.333-40", "M", "(34) 99150-9513", "2018-12-13", "02")));
 
         listView.setAdapter(new NotaAdapter(this, notaFiscals));
+        setContentView(listView);
         listView.setOnItemClickListener(this);
 
     }
