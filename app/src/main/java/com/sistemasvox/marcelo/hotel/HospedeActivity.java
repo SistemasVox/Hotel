@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sistemasvox.marcelo.hotel.model.Hospede;
@@ -35,6 +36,24 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
         listView.setAdapter(new HospedeAdapter(this, hospedes));
         listView.setOnItemClickListener(this);
 
+    }
+
+    public void cadastrarHospedes(View v) {
+        setContentView(R.layout.savedit_hosp);
+    }
+
+    public void salvarHospedes(View v) {
+        TextView nome = findViewById(R.id.txtNomeRes);
+        TextView cpf = findViewById(R.id.txtCPFR);
+        TextView sexo = findViewById(R.id.txtSexoR);
+        TextView tefelone = findViewById(R.id.txtTelR);
+        TextView data = findViewById(R.id.txtDataINR);
+        TextView nota = findViewById(R.id.txtNotaIDR);
+        if ((nome.getText().length() < 3) || (cpf.getText().length() != 14) || (sexo.getText().length() != 1) || (tefelone.getText().length() != 15) || (data.getText().length() != 10) || (nota.getText().length() != 2)) {
+            mensagem("Dados inválidos, siga o exemplo em claro.");
+        } else {
+            mensagem("Dados OK");
+        }
     }
 
     @Override
