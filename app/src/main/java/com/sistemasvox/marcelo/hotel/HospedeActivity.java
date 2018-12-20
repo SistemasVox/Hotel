@@ -12,7 +12,6 @@ import com.sistemasvox.marcelo.hotel.model.Hospede;
 import com.sistemasvox.marcelo.hotel.model.HospedeAdapter;
 import com.sistemasvox.marcelo.hotel.services.RetrofitService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -34,12 +33,16 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
     public void listarHospedes(View v) {
         listView = new ListView(this);
         setContentView(listView);
+        /*
         hospedes = new ArrayList<Hospede>();
+        hospedes.add(new Hospede("Marcelo Vieira", "122.999.666-40", "M", "(34) 99150-9513", "2018-12-13"));
+        hospedes.add(new Hospede("Marcelo Ômega", "111.222.333-40", "M", "(34) 99150-9513", "2018-12-13"));*/
 
-        hospedes.add(new Hospede("Marcelo Vieira", "122.999.666-40", "M", "(34) 99150-9513", "2018-12-13", "01"));
-        hospedes.add(new Hospede("Marcelo Ômega", "111.222.333-40", "M", "(34) 99150-9513", "2018-12-13", "02"));
+        hospedes = (List<Hospede>) RetrofitService.getServico().getHospedes();
 
         listView.setAdapter(new HospedeAdapter(this, hospedes));
+
+
         listView.setOnItemClickListener(this);
 
     }
@@ -54,16 +57,26 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
         TextView sexo = findViewById(R.id.txtSexoR);
         TextView tefelone = findViewById(R.id.txtTelR);
         TextView data = findViewById(R.id.txtDataINR);
-        TextView nota = findViewById(R.id.txtNotaIDR);
-        if ((nome.getText().length() < 3) || (cpf.getText().length() != 14) || (sexo.getText().length() != 1) || (tefelone.getText().length() != 15) || (data.getText().length() != 10) || (nota.getText().length() != 2)) {
+        if ((nome.getText().length() < 3) || (cpf.getText().length() != 14) || (sexo.getText().length() != 1) || (tefelone.getText().length() != 15) || (data.getText().length() != 10)) {
             mensagem("Dados inválidos, siga o exemplo em claro.");
         } else {
             mensagem("Cadastrando...");
-            salvarHospede(new Hospede(nome.getText().toString(), cpf.getText().toString(), sexo.getText().toString(), tefelone.getText().toString(), data.getText().toString(), nota.getText().toString()));
+            salvarHospede(new Hospede(nome.getText().toString(), cpf.getText().toString(), sexo.getText().toString(), tefelone.getText().toString(), data.getText().toString()));
         }
     }
 
     private void salvarHospede(Hospede hospede) {
+        RetrofitService.getServico().deletaHospede(hospede.getCpf()).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                mensagem("Hospede atualizado com sucesso.");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
         RetrofitService.getServico().salvarHospedeRetro(hospede).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -79,8 +92,22 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Hospede hospede = (Hospede) parent.getItemAtPosition(position);
-        Toast.makeText(this, hospede.getNome(), Toast.LENGTH_SHORT).show();
+        preecher_salvar_Hospede(view, hospedes.get(position));
+    }
+
+    private void preecher_salvar_Hospede(View view, Hospede hospede) {
+        cadastrarHospedes(view);
+        TextView nome = findViewById(R.id.txtNomeRes);
+        TextView cpf = findViewById(R.id.txtCPFR);
+        TextView sexo = findViewById(R.id.txtSexoR);
+        TextView tel = findViewById(R.id.txtTelR);
+        TextView data_in = findViewById(R.id.txtDataINR);
+        nome.setText(hospede.getNome());
+        cpf.setText(hospede.getCpf());
+        sexo.setText(hospede.getSexo());
+        tel.setText(hospede.getTel());
+        data_in.setText(hospede.getData_in());
+
     }
 
     private void mensagem(String s) {

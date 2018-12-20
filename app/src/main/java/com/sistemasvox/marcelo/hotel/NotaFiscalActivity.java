@@ -13,7 +13,6 @@ import com.sistemasvox.marcelo.hotel.model.NotaAdapter;
 import com.sistemasvox.marcelo.hotel.model.NotaFiscal;
 import com.sistemasvox.marcelo.hotel.services.RetrofitService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -36,12 +35,12 @@ public class NotaFiscalActivity extends Activity {
     public void listarNotas(View v) {
         listView = new ListView(this);
 
-        //notaFiscals = (List<NotaFiscal>) RetrofitService.getServico().getNotas();
+        notaFiscals = (List<NotaFiscal>) RetrofitService.getServico().getNotas();
 
+        /*
         notaFiscals = new ArrayList<NotaFiscal>();
-
         notaFiscals.add(new NotaFiscal("Marcelo Vieira", "122.999.666-40", "100.00"));
-        notaFiscals.add(new NotaFiscal("Marcelo Ômega", "111.222.333-40", "200.00"));
+        notaFiscals.add(new NotaFiscal("Marcelo Ômega", "111.222.333-40", "200.00"));*/
 
 
         listView.setAdapter(new NotaAdapter(this, notaFiscals));

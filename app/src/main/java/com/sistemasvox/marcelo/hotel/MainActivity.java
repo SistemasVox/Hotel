@@ -18,11 +18,6 @@ public class MainActivity extends Activity implements View.OnKeyListener {
         Intent i = new Intent(this, HospedeActivity.class);
         startActivity(i);
     }
-
-    public void btnReserva(View v) {
-        Intent i = new Intent(this, ReservaActivity.class);
-        startActivity(i);
-    }
     public void btnNotas(View v) {
         Intent i = new Intent(this, NotaFiscalActivity.class);
         startActivity(i);
@@ -30,9 +25,6 @@ public class MainActivity extends Activity implements View.OnKeyListener {
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
-            return true;
-        }
-        return false;
+        return keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP;
     }
 }

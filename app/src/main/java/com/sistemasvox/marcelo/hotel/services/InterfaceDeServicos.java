@@ -22,7 +22,7 @@ public interface InterfaceDeServicos {
     Call<List<Hospede>> getHospedes();
 
     @DELETE("/hospedes/{cpf}")
-    Call<ResponseBody> deletaHospede(@Path("cpf") int id);
+    Call<ResponseBody> deletaHospede(@Path("cpf") String id);
 
     @POST("/hospede")
     Call<ResponseBody> salvarHospedeRetro(@Body Hospede hospede);

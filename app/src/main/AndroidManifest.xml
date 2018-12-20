@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".HospedeActivity" />
-        <activity android:name=".ReservaActivity" />
         <activity android:name=".NotaFiscalActivity" />
     </application>
 

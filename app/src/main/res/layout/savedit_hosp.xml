@@ -99,16 +99,15 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:gravity="center_horizontal"
         android:hint="@string/txtSexoR"
-        android:maxEms="2"
         android:inputType="text"
+        android:maxEms="2"
         android:padding="8dp"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtSexo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCPFR" />
+        app:layout_constraintTop_toTopOf="@+id/txtSexo" />
 
     <EditText
         android:id="@+id/txtTelR"
@@ -155,35 +154,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtDataIN" />
 
-    <TextView
-        android:id="@+id/txtNotaID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:padding="8dp"
-        android:text="@string/txtNotaID"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDataIN" />
-
-    <EditText
-        android:id="@+id/txtNotaIDR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:gravity="center_horizontal"
-        android:hint="@string/txtNotaIDR"
-        android:ems="2"
-        android:inputType="number"
-        android:padding="8dp"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtNotaID"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtNotaID" />
-
     <Button
         android:id="@+id/btnSalvar"
         android:layout_width="wrap_content"
@@ -196,5 +166,5 @@
         android:text="@string/btnSavar"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNotaIDR" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDataINR" />
 </android.support.constraint.ConstraintLayout>

@@ -1,18 +1,17 @@
 package com.sistemasvox.marcelo.hotel.model;
 
 public class Hospede {
-    private String nome, cpf, sexo, tel, data_in, numNota;
+    private String nome, cpf, sexo, tel, data_in;
 
     public Hospede() {
     }
 
-    public Hospede(String nome, String cpf, String sexo, String tel, String data_in, String numNota) {
+    public Hospede(String nome, String cpf, String sexo, String tel, String data_in) {
         this.nome = nome;
         this.cpf = cpf;
         this.sexo = sexo;
         this.tel = tel;
         this.data_in = data_in;
-        this.numNota = numNota;
     }
 
     public String getNome() {
@@ -55,14 +54,6 @@ public class Hospede {
         this.data_in = data_in;
     }
 
-    public String getNumNota() {
-        return numNota;
-    }
-
-    public void setNumNota(String numNota) {
-        this.numNota = numNota;
-    }
-
     @Override
     public String toString() {
         return "Hospede{" +
@@ -71,7 +62,6 @@ public class Hospede {
                 ", sexo='" + sexo + '\'' +
                 ", tel='" + tel + '\'' +
                 ", data_in='" + data_in + '\'' +
-                ", numNota='" + numNota + '\'' +
                 '}';
     }
 }

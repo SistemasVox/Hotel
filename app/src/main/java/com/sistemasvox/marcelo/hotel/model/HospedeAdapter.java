@@ -46,12 +46,11 @@ public class HospedeAdapter  extends BaseAdapter {
 
         //Passo 3 Preecher
 
-        TextView nome = (TextView) linha.findViewById(R.id.txtNomeRes);
-        TextView cpf = (TextView) linha.findViewById(R.id.txtCPFR);
-        TextView sexo = (TextView) linha.findViewById(R.id.txtSexoR);
-        TextView tel = (TextView) linha.findViewById(R.id.txtTelR);
-        TextView data_in = (TextView) linha.findViewById(R.id.txtDataINR);
-        TextView numNota = (TextView) linha.findViewById(R.id.txtNotaIDR);
+        TextView nome = linha.findViewById(R.id.txtNomeRes);
+        TextView cpf = linha.findViewById(R.id.txtCPFR);
+        TextView sexo = linha.findViewById(R.id.txtSexoR);
+        TextView tel = linha.findViewById(R.id.txtTelR);
+        TextView data_in = linha.findViewById(R.id.txtDataINR);
 
 
         nome.setText(hospede.getNome());
@@ -59,7 +58,6 @@ public class HospedeAdapter  extends BaseAdapter {
         sexo.setText(hospede.getSexo());
         tel.setText(hospede.getTel());
         data_in.setText(hospede.getData_in());
-        numNota.setText(hospede.getNumNota());
 
         return linha;
     }
