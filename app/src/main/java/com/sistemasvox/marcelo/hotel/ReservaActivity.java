@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sistemasvox.marcelo.hotel.model.Hospede;
-import com.sistemasvox.marcelo.hotel.model.HospedeAdapter;
 import com.sistemasvox.marcelo.hotel.model.Reserva;
 import com.sistemasvox.marcelo.hotel.model.ReservaAdapter;
 
@@ -37,6 +37,21 @@ public class ReservaActivity extends Activity implements AdapterView.OnItemClick
         listView.setAdapter(new ReservaAdapter(this, reservas));
         listView.setOnItemClickListener(this);
 
+    }
+
+    public void cadastrarReserva(View v) {
+        setContentView(R.layout.savedit_reserva);
+    }
+
+    public void salvarReserva(View v) {
+        TextView nome = findViewById(R.id.txtNomeRes);
+        TextView cpf = findViewById(R.id.txtCPFR);
+        TextView tempoHosp = findViewById(R.id.txtTempHospR);
+        if ((nome.getText().length() < 3) || (cpf.getText().length() != 14) || (Integer.parseInt(tempoHosp.getText().toString()) < 1)) {
+            mensagem("Dados inválidos, siga o exemplo em claro.");
+        } else {
+            mensagem("Dados OK");
+        }
     }
 
     @Override
