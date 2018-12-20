@@ -194,7 +194,7 @@
         android:onClick="salvarHospedes"
         android:padding="12dp"
         android:text="@string/btnSavar"
-        android:textSize="36sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNotaIDR" />
 </android.support.constraint.ConstraintLayout>

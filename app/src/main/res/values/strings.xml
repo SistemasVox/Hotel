@@ -22,8 +22,8 @@
     <string name="txtTempHosp">Tempo de Hospedagem:</string>
     <string name="txtTempHospR">0</string>
     <string name="txtValorNota">Valor:</string>
-    <string name="txtValorNotaR">0.00</string>
-    <string name="btnSavar">Salvar</string>
+    <string name="txtValorNotaR">100.00</string>
+    <string name="btnSavar">Salvar e Editar</string>
     <string name="btnCadastrarHosp">Cadastrar</string>
 
 </resources>

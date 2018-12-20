@@ -1,7 +1,6 @@
 package com.sistemasvox.marcelo.hotel.model;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,18 +47,13 @@ public class NotaAdapter extends BaseAdapter {
         View linha = LayoutInflater.from(ctx).inflate(R.layout.layout_notas_fiscais,null);
 
         //Passo 3 Preecher
-        TextView nome = (TextView) linha.findViewById(R.id.txtNomeRes);
-        TextView cpf = (TextView) linha.findViewById(R.id.txtCPFR);
-        TextView valor = (TextView) linha.findViewById(R.id.txtValorNotaR);
-        TextView idNota = (TextView) linha.findViewById(R.id.txtCodR);
+        TextView nome = linha.findViewById(R.id.txtNomeRes);
+        TextView cpf = linha.findViewById(R.id.txtCPFR);
+        TextView valor = linha.findViewById(R.id.txtValorNotaR);
 
-        nome.setText(notaFiscal.getHospede().getNome());
-        cpf.setText(notaFiscal.getHospede().getCpf());
+        nome.setText(notaFiscal.getNome());
+        cpf.setText(notaFiscal.getCpf());
         valor.setText(String.valueOf(notaFiscal.getValor()));
-        Log.i(TAG, notaFiscal.getCod());
-        Log.i(TAG, "Oi");
-
-        idNota.setText(notaFiscal.getCod());
 
         return linha;
     }

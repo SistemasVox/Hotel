@@ -1,48 +1,38 @@
 package com.sistemasvox.marcelo.hotel.model;
 
 public class NotaFiscal {
-    private String cod;
-    private Double valor;
-    private Hospede hospede;
+    private String nome, cpf, valor;
 
     public NotaFiscal() {
     }
 
-    public NotaFiscal(String cod, Double valor, Hospede hospede) {
-        this.cod = cod;
+    public NotaFiscal(String nome, String cpf, String valor) {
+        this.nome = nome;
+        this.cpf = cpf;
         this.valor = valor;
-        this.hospede = hospede;
     }
 
-    public String getCod() {
-        return cod;
+    public String getNome() {
+        return nome;
     }
 
-    public void setCod(String cod) {
-        this.cod = cod;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Double getValor() {
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
-    }
-
-    public Hospede getHospede() {
-        return hospede;
-    }
-
-    public void setHospede(Hospede hospede) {
-        this.hospede = hospede;
-    }
-    @Override
-    public String toString() {
-        return "NotaFiscal{" +
-                "cod='" + cod + '\'' +
-                ", valor=" + valor +
-                ", hospede=" + hospede +
-                '}';
     }
 }

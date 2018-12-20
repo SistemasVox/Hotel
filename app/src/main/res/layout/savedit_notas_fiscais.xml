@@ -18,14 +18,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtNomeRes"
+    <EditText
+        android:id="@+id/txtNomeResE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:gravity="end"
+        android:hint="@string/txtNomeHospedeR"
         android:padding="8dp"
-        android:text="@string/txtNomeHospedeR"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtNome"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,14 +46,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNome" />
 
-    <TextView
-        android:id="@+id/txtCPFR"
+    <EditText
+        android:id="@+id/txtCPFRR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:gravity="end"
+        android:hint="@string/txtCPFHospede"
         android:padding="8dp"
-        android:text="@string/txtCPFHospede"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtCPF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,41 +73,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCPF" />
 
-    <TextView
-        android:id="@+id/txtValorNotaR"
+    <EditText
+        android:id="@+id/txtValorNotaRR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:gravity="end"
+        android:hint="@string/txtValorNotaR"
+        android:inputType="numberDecimal"
         android:padding="8dp"
-        android:text="@string/txtValorNotaR"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtValorNota"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtValorNota" />
 
-    <TextView
-        android:id="@+id/txtCod"
+    <Button
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:padding="8dp"
-        android:text="@string/txtNotaID"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtValorNota" />
-
-    <TextView
-        android:id="@+id/txtCodR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:padding="8dp"
-        android:text="@string/txtNotaIDR"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtCod"
+        android:onClick="lerNota"
+        android:text="@string/btnSavar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtCod" />
+        app:layout_constraintTop_toBottomOf="@+id/txtValorNotaRR" />
 </android.support.constraint.ConstraintLayout>

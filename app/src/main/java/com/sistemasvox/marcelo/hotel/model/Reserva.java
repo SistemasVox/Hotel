@@ -1,29 +1,29 @@
 package com.sistemasvox.marcelo.hotel.model;
 
 public class Reserva {
-    private String cod, tempoHosp;
+    private String cpf, tempoHosp;
     private Hospede hospede;
 
     public Reserva() {
     }
 
-    public Reserva(String cod, Hospede hospede) {
-        this.cod = cod;
+    public Reserva(String cpf, Hospede hospede) {
+        this.cpf = cpf;
         this.hospede = hospede;
     }
 
-    public Reserva(String cod, String tempoHosp, Hospede hospede) {
-        this.cod = cod;
+    public Reserva(String cpf, String tempoHosp, Hospede hospede) {
+        this.cpf = cpf;
         this.tempoHosp = tempoHosp;
         this.hospede = hospede;
     }
 
-    public String getCod() {
-        return cod;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCod(String cod) {
-        this.cod = cod;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getTempoHosp() {

@@ -10,9 +10,15 @@ import android.widget.Toast;
 
 import com.sistemasvox.marcelo.hotel.model.Hospede;
 import com.sistemasvox.marcelo.hotel.model.HospedeAdapter;
+import com.sistemasvox.marcelo.hotel.services.RetrofitService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HospedeActivity extends Activity implements AdapterView.OnItemClickListener {
 
@@ -52,8 +58,23 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
         if ((nome.getText().length() < 3) || (cpf.getText().length() != 14) || (sexo.getText().length() != 1) || (tefelone.getText().length() != 15) || (data.getText().length() != 10) || (nota.getText().length() != 2)) {
             mensagem("Dados inválidos, siga o exemplo em claro.");
         } else {
-            mensagem("Dados OK");
+            mensagem("Cadastrando...");
+            salvarHospede(new Hospede(nome.getText().toString(), cpf.getText().toString(), sexo.getText().toString(), tefelone.getText().toString(), data.getText().toString(), nota.getText().toString()));
         }
+    }
+
+    private void salvarHospede(Hospede hospede) {
+        RetrofitService.getServico().salvarHospedeRetro(hospede).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                mensagem("Hospede salvo no banco de dados. ");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                mensagem("Erro ao salvar Hospede no banco de dados. ");
+            }
+        });
     }
 
     @Override
