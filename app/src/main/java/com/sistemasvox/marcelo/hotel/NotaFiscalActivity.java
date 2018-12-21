@@ -134,7 +134,7 @@ public class NotaFiscalActivity extends Activity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                mensagem("Hospede não encontrado, ou servidor Offline.");
             }
         });
         setContentView(R.layout.activity_nota_fiscal);
