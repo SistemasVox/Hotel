@@ -31,24 +31,29 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
     }
 
     public void listarHospedes(View v) {
-        listView = new ListView(this);
-        setContentView(listView);
+
         /*
         hospedes = new ArrayList<Hospede>();
         hospedes.add(new Hospede("Marcelo Vieira", "122.999.666-40", "M", "(34) 99150-9513", "2018-12-13"));
         hospedes.add(new Hospede("Marcelo Ômega", "111.222.333-40", "M", "(34) 99150-9513", "2018-12-13"));*/
 
-        hospedes = (List<Hospede>) RetrofitService.getServico().getHospedes();
+        try {
+            hospedes = (List<Hospede>) RetrofitService.getServico().getHospedes();
+            listView = new ListView(this);
+            setContentView(listView);
+            listView.setAdapter(new HospedeAdapter(this, hospedes));
+            listView.setOnItemClickListener(this);
+        } catch (Exception e) {
+            mensagem("Erro, talvez seu servidor esteja onffline.");
+        }
 
-        listView.setAdapter(new HospedeAdapter(this, hospedes));
-
-
-        listView.setOnItemClickListener(this);
 
     }
 
     public void cadastrarHospedes(View v) {
         setContentView(R.layout.savedit_hosp);
+        TextView textView = findViewById(R.id.btnDel);
+        textView.setVisibility(View.INVISIBLE);
     }
 
     public void salvarHospedes(View v) {
@@ -61,22 +66,13 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
             mensagem("Dados inválidos, siga o exemplo em claro.");
         } else {
             mensagem("Cadastrando...");
+            //Atualizar existir
+            deletaHospede(v);
             salvarHospede(new Hospede(nome.getText().toString(), cpf.getText().toString(), sexo.getText().toString(), tefelone.getText().toString(), data.getText().toString()));
         }
     }
 
     private void salvarHospede(Hospede hospede) {
-        RetrofitService.getServico().deletaHospede(hospede.getCpf()).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                mensagem("Hospede atualizado com sucesso.");
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-            }
-        });
         RetrofitService.getServico().salvarHospedeRetro(hospede).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -88,6 +84,23 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
                 mensagem("Erro ao salvar Hospede no banco de dados. ");
             }
         });
+
+    }
+
+    public void deletaHospede(View v) {
+        TextView textView = findViewById(R.id.txtCPFR);
+        RetrofitService.getServico().deletaHospede(textView.getText().toString()).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                mensagem("Hospede atualizado com sucesso.");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        setContentView(R.layout.activity_hospede);
     }
 
     @Override
@@ -97,6 +110,8 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
 
     private void preecher_salvar_Hospede(View view, Hospede hospede) {
         cadastrarHospedes(view);
+        TextView textView = findViewById(R.id.btnDel);
+        textView.setVisibility(View.VISIBLE);
         TextView nome = findViewById(R.id.txtNomeRes);
         TextView cpf = findViewById(R.id.txtCPFR);
         TextView sexo = findViewById(R.id.txtSexoR);

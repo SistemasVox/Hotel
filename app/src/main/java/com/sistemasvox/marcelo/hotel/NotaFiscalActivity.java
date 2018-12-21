@@ -34,29 +34,34 @@ public class NotaFiscalActivity extends Activity {
 
     public void listarNotas(View v) {
         listView = new ListView(this);
-
-        notaFiscals = (List<NotaFiscal>) RetrofitService.getServico().getNotas();
-
         /*
         notaFiscals = new ArrayList<NotaFiscal>();
         notaFiscals.add(new NotaFiscal("Marcelo Vieira", "122.999.666-40", "100.00"));
-        notaFiscals.add(new NotaFiscal("Marcelo Ômega", "111.222.333-40", "200.00"));*/
+        notaFiscals.add(new NotaFiscal("Marcelo Ômega", "111.222.333-40", "200.00"));
+        */
 
+        try {
+            notaFiscals = (List<NotaFiscal>) RetrofitService.getServico().getNotas();
+            listView.setAdapter(new NotaAdapter(this, notaFiscals));
 
-        listView.setAdapter(new NotaAdapter(this, notaFiscals));
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    preecher_salvar_Notas(view, notaFiscals.get(position));
+                }
+            });
+            setContentView(listView);
+        } catch (Exception e) {
+            mensagem("Erro, talvez seu servidor esteja onffline.");
+        }
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                preecher_salvar_Notas(view, notaFiscals.get(position));
-            }
-        });
-        setContentView(listView);
 
     }
 
     public void cadastrarNotas(View v) {
         setContentView(R.layout.savedit_notas_fiscais);
+        TextView textView = findViewById(R.id.btnDel);
+        textView.setVisibility(View.INVISIBLE);
 
     }
 
@@ -79,16 +84,6 @@ public class NotaFiscalActivity extends Activity {
     }
 
     public void salvarNota(NotaFiscal notaFiscal) {
-        RetrofitService.getServico().deletaNota(notaFiscal.getCpf()).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                mensagem("Nota atualizada");
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-            }
-        });
         RetrofitService.getServico().salvarNota(notaFiscal).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -110,11 +105,28 @@ public class NotaFiscalActivity extends Activity {
             mensagem("Dados inválidos");
         } else {
             mensagem("Cadastrando...");
+            //Atualizando se existir
+            deletaNota(v);
             salvarNota(new NotaFiscal(nome.getText().toString(), cpf.getText().toString(), valor.getText().toString()));
         }
 
     }
 
+    public void deletaNota(View v) {
+        TextView textView = findViewById(R.id.txtCPFRR);
+        RetrofitService.getServico().deletaNota(textView.getText().toString()).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                mensagem("Nota deletada com sucesso.");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        setContentView(R.layout.activity_nota_fiscal);
+    }
     private void mensagem(String s) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }

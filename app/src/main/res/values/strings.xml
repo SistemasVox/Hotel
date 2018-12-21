@@ -25,5 +25,6 @@
     <string name="txtValorNotaR">100.00</string>
     <string name="btnSavar">Salvar e Editar</string>
     <string name="btnCadastrarHosp">Cadastrar</string>
+    <string name="btnDel">Deletar</string>
 
 </resources>
