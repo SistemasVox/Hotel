@@ -1,6 +1,7 @@
 package com.sistemasvox.marcelo.hotel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,17 +38,31 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
         hospedes.add(new Hospede("Marcelo Vieira", "122.999.666-40", "M", "(34) 99150-9513", "2018-12-13"));
         hospedes.add(new Hospede("Marcelo Ômega", "111.222.333-40", "M", "(34) 99150-9513", "2018-12-13"));*/
 
-        try {
-            hospedes = (List<Hospede>) RetrofitService.getServico().getHospedes();
-            listView = new ListView(this);
-            setContentView(listView);
-            listView.setAdapter(new HospedeAdapter(this, hospedes));
-            listView.setOnItemClickListener(this);
-        } catch (Exception e) {
-            mensagem("Erro, talvez seu servidor esteja onffline.");
-        }
+        getHospedes(this);
 
 
+    }
+
+    private void getHospedes(final Context context) {
+        Call<List<Hospede>> call = RetrofitService.getServico().getHospedes();
+        call.enqueue(new Callback<List<Hospede>>() {
+            @Override
+            public void onResponse(Call<List<Hospede>> call, Response<List<Hospede>> response) {
+                if (response.isSuccessful()) {
+                    hospedes = response.body();
+                    listView = new ListView(context);
+                    setContentView(listView);
+                    listView.setAdapter(new HospedeAdapter(context, hospedes));
+                    listView.setOnItemClickListener((AdapterView.OnItemClickListener) context);
+                    setContentView(listView);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Hospede>> call, Throwable t) {
+                mensagem("Erro, talvez seu servidor esteja onffline.");
+            }
+        });
     }
 
     public void cadastrarHospedes(View v) {

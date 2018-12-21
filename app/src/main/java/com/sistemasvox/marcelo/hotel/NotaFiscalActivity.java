@@ -1,6 +1,7 @@
 package com.sistemasvox.marcelo.hotel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,23 +40,34 @@ public class NotaFiscalActivity extends Activity {
         notaFiscals.add(new NotaFiscal("Marcelo Vieira", "122.999.666-40", "100.00"));
         notaFiscals.add(new NotaFiscal("Marcelo Ômega", "111.222.333-40", "200.00"));
         */
+        getNostas(this);
 
-        try {
-            notaFiscals = (List<NotaFiscal>) RetrofitService.getServico().getNotas();
-            listView.setAdapter(new NotaAdapter(this, notaFiscals));
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    preecher_salvar_Notas(view, notaFiscals.get(position));
+    }
+
+    private void getNostas(final Context context) {
+        Call<List<NotaFiscal>> call = RetrofitService.getServico().getNotas();
+        call.enqueue(new Callback<List<NotaFiscal>>() {
+            @Override
+            public void onResponse(Call<List<NotaFiscal>> call, Response<List<NotaFiscal>> response) {
+                if (response.isSuccessful()) {
+                    notaFiscals = response.body();
+                    listView.setAdapter(new NotaAdapter(context, notaFiscals));
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            preecher_salvar_Notas(view, notaFiscals.get(position));
+                        }
+                    });
+                    setContentView(listView);
                 }
-            });
-            setContentView(listView);
-        } catch (Exception e) {
-            mensagem("Erro, talvez seu servidor esteja onffline.");
-        }
+            }
 
-
+            @Override
+            public void onFailure(Call<List<NotaFiscal>> call, Throwable t) {
+                mensagem("Erro, talvez seu servidor esteja onffline.");
+            }
+        });
     }
 
     public void cadastrarNotas(View v) {
