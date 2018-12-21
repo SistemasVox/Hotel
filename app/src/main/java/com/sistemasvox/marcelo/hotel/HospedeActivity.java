@@ -107,12 +107,12 @@ public class HospedeActivity extends Activity implements AdapterView.OnItemClick
         RetrofitService.getServico().deletaHospede(textView.getText().toString()).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                mensagem("Hospede atualizado com sucesso.");
+                mensagem("Hospede deletado com sucesso.");
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                mensagem("Hospede não encontrado, ou servidor Offline.");
             }
         });
         setContentView(R.layout.activity_hospede);
